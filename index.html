@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,10 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
       body {
-        color: white;
+        color: rgba(0,0,0,0.25);
         background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 1000%;
         animation: gradient 15s ease infinite;
-        font-family: 'Raleway', Helvetica, sans-serif;
+        font-family: 'Rubik Mono One', sans-serif;
       }
 
       @keyframes gradient {
@@ -30,27 +33,29 @@
         text-align: center;
       }
       .progress {
-        background-color: lightgrey;
+        background-color: rgba(150,150,150,0.25);
         height: 50px;
       }
       .progress > svg {
         display: block;
         height: 100%;
       }
-      #percent {
-        font-family: 'Raleway', Helvetica, sans-serif;
-      }
     </style>
   </head>
   <body>
     <h1>Year</h1>
-
     <div class="progress" id="yProgress"></div>
+    <h3 id="yPercent">Time Stopped :(</h3>
 
-    <h1 id="yPercent"></h1>
+    <h1>Month</h1>
+    <div class="progress" id="mProgress"></div>
+    <h3 id="mPercent">Time Stopped :(</h3>
+
+    <h1>Week</h1>
+    <div class="progress" id="wProgress"></div>
+    <h3 id="wPercent">Time Stopped :(</h3>
 
     <script src="progressbar.min.js"></script>
-
     <script src="main.js"></script>
   </body>
 </html>
