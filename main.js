@@ -1,6 +1,9 @@
+
 window.onload = function onLoad() {
   var line = new ProgressBar.Line('#progress', {
-    color: '#FCB03C'
+    color: '#FFEA82',
+    from: {color: '#FFEA82'},
+    to: {color: '#ED6A5A'},
   });
 
   function progress() {
