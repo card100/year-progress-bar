@@ -141,7 +141,7 @@ function min(){
   
   function progress() {
       var wNow = new Date();
-      var wDone = wNow.getSeconds()/100;
+      var wDone = wNow.getSeconds()/60;
       var wPercentStr = Math.round((100.0 * wDone)).toString();
       document.getElementById("miPercent").innerHTML = wPercentStr + "%";
       return wDone;
