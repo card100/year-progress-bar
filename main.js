@@ -24,7 +24,7 @@ window.onload = function onLoad() {
     } else {
       yPercentStr = yPercentStr.slice(0, 10);
     }
-    document.getElementById("percent").innerHTML = yPercentStr + "%";
+    document.getElementById("yPercent").innerHTML = yPercentStr + "%";
     return done;
   }
 
