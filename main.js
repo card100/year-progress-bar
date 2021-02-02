@@ -18,7 +18,7 @@ window.onload = function onLoad() {
     var yStart = new Date(now.getFullYear(), 0, 1);  // Start of this year
     var yEnd = new Date(now.getFullYear() + 1, 0, 1);  // End of this year
     var yDone = (now-yStart) / (yEnd-yStart);
-    var yPercentStr = (100.0 * done).toString();
+    var yPercentStr = (100.0 * yDone).toString();
     if (yDone < 0.1) {
       yPercentStr = yPercentStr.slice(0, 9);
     } else {
