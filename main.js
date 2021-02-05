@@ -1,18 +1,28 @@
-//Year
 window.onload = function onLoad() {
-  years();
-  months();
-  week();
-  day();
-  hour();
+  run();
   min();
 }
-function years(){
-  var yLine = new ProgressBar.Line('#yProgress', {
+function run(){
+  var yLine = new ProgressBar.Line('#yProgress', { // Year
+    color: 'rgba(255,255,255,0.5)'
+  });
+  var mLine = new ProgressBar.Line('#mProgress', { // Month
+    color: 'rgba(255,255,255,0.5)'
+  });
+  var wLine = new ProgressBar.Line('#wProgress', { // Week
+    color: 'rgba(255,255,255,0.5)'
+  });
+  var dLine = new ProgressBar.Line('#dProgress', { // Day
+    color: 'rgba(255,255,255,0.5)'
+  });
+  var hLine = new ProgressBar.Line('#hProgress', {
+    color: 'rgba(255,255,255,0.5)'
+  });
+  var miLine = new ProgressBar.Line('#miProgress', {
     color: 'rgba(255,255,255,0.5)'
   });
 
-  function progress() {
+  function progressY() {
     var now = new Date();
     var yStart = new Date(now.getFullYear(), 0, 1);  // Start of this year
     var yEnd = new Date(now.getFullYear() + 1, 0, 1);  // End of this year
@@ -26,132 +36,57 @@ function years(){
     document.getElementById("yPercent").innerHTML = yPercentStr + "%";
     return yDone;
   }
-
-  yLine.animate(progress());  // Number from 0.0 to 1.0
-
-  setInterval(update, 16);
-
-  function update() {
-    yLine.set(progress());
-  }
+  function progressM() {
+    var mNow = new Date();
+    var mDone = mNow.getMonth()/12;
+    var mPercentStr = Math.round(100.0 * mDone).toString();
+    document.getElementById("mPercent").innerHTML = mPercentStr + "%";
+    return mDone;
+}
+function progressW() {
+  var wNow = new Date();
+  var wDone = wNow.getMonth()/7;
+  var wPercentStr = Math.round((100.0 * wDone)).toString();
+  document.getElementById("wPercent").innerHTML = wPercentStr + "%";
+  return wDone;
+}
+function progressD() {
+  var wNow = new Date();
+  var wDone = wNow.getHours()/24;
+  var wPercentStr = Math.round((100.0 * wDone)).toString();
+  document.getElementById("dPercent").innerHTML = wPercentStr + "%";
+  return wDone;
+}
+function progressH() {
+  var wNow = new Date();
+  var wDone = wNow.getMinutes()/60;
+  var wPercentStr = Math.round((100.0 * wDone)).toString();
+  document.getElementById("hPercent").innerHTML = wPercentStr + "%";
+  return wDone;
+}
+function progressMi() {
+  var wNow = new Date();
+  var wDone = wNow.getSeconds()/60;
+  var wPercentStr = Math.round((100.0 * wDone)).toString();
+  document.getElementById("miPercent").innerHTML = wPercentStr + "%";
+  return wDone;
 }
 
+  yLine.animate(progressY());  // Year
+  mLine.animate(progressM());  // Month
+  wLine.animate(progressW());  // Week
+  dLine.animate(progressD());  // Day
+  hLine.animate(progressH());  // Hour
+  miLine.animate(progressMi());  // Minute
 
-//Month
-function months(){
-  var mLine = new ProgressBar.Line('#mProgress', {
-  color: 'rgba(255,255,255,0.5)'
-  });
-  
-  function progress() {
-      var mNow = new Date();
-      var mDone = mNow.getMonth()/12;
-      var mPercentStr = Math.round(100.0 * mDone).toString();
-      document.getElementById("mPercent").innerHTML = mPercentStr + "%";
-      return mDone;
-  }
-  
-  mLine.animate(progress());  // Number from 0.0 to 1.0
-  
   setInterval(update, 16);
-  
+
   function update() {
-      mLine.set(progress());
-  }
-}
-
-
-//Week
-function week(){
-  var wLine = new ProgressBar.Line('#wProgress', {
-  color: 'rgba(255,255,255,0.5)'
-  });
-  
-  function progress() {
-      var wNow = new Date();
-      var wDone = wNow.getMonth()/7;
-      var wPercentStr = Math.round((100.0 * wDone)).toString();
-      document.getElementById("wPercent").innerHTML = wPercentStr + "%";
-      return wDone;
-  }
-  
-  wLine.animate(progress());  // Number from 0.0 to 1.0
-  
-  setInterval(update, 16);
-  
-  function update() {
-      wLine.set(progress());
-  }
-}
-
-
-//Day
-function day(){
-  var wLine = new ProgressBar.Line('#dProgress', {
-  color: 'rgba(255,255,255,0.5)'
-  });
-  
-  function progress() {
-      var wNow = new Date();
-      var wDone = wNow.getHours()/24;
-      var wPercentStr = Math.round((100.0 * wDone)).toString();
-      document.getElementById("dPercent").innerHTML = wPercentStr + "%";
-      return wDone;
-  }
-  
-  wLine.animate(progress());  // Number from 0.0 to 1.0
-  
-  setInterval(update, 16);
-  
-  function update() {
-      wLine.set(progress());
-  }
-}
-
-
-//hour
-function hour(){
-  var wLine = new ProgressBar.Line('#hProgress', {
-  color: 'rgba(255,255,255,0.5)'
-  });
-  
-  function progress() {
-      var wNow = new Date();
-      var wDone = wNow.getMinutes()/60;
-      var wPercentStr = Math.round((100.0 * wDone)).toString();
-      document.getElementById("hPercent").innerHTML = wPercentStr + "%";
-      return wDone;
-  }
-  
-  wLine.animate(progress());  // Number from 0.0 to 1.0
-  
-  setInterval(update, 16);
-  
-  function update() {
-      wLine.set(progress());
-  }
-}
-
-
-//min
-function min(){
-  var wLine = new ProgressBar.Line('#miProgress', {
-  color: 'rgba(255,255,255,0.5)'
-  });
-  
-  function progress() {
-      var wNow = new Date();
-      var wDone = wNow.getSeconds()/60;
-      var wPercentStr = Math.round((100.0 * wDone)).toString();
-      document.getElementById("miPercent").innerHTML = wPercentStr + "%";
-      return wDone;
-  }
-  
-  wLine.animate(progress());  // Number from 0.0 to 1.0
-  
-  setInterval(update, 16);
-  
-  function update() {
-      wLine.set(progress());
+    yLine.set(progressY());
+    mLine.set(progressM());
+    wLine.set(progressW());
+    dLine.set(progressD());
+    hLine.set(progressH());
+    miLine.set(progressMi());
   }
 }
